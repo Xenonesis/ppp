@@ -11,6 +11,9 @@ function goToSlide(slideNumber, direction = 'next') {
     // Check if slide exists
     const totalSlides = 19; // Based on the files we saw
     if (slideNumber >= 1 && slideNumber <= totalSlides) {
+        // Store fullscreen state before navigation
+        storeFullscreenState();
+
         // Add smooth fade out effect
         const slide = document.querySelector('.slide');
         if (slide) {
@@ -18,7 +21,7 @@ function goToSlide(slideNumber, direction = 'next') {
             slide.style.transform = direction === 'next' ? 'translateX(-20px)' : 'translateX(20px)';
             slide.style.transition = 'all 0.25s ease';
         }
-        
+
         // Navigate after animation
         setTimeout(() => {
             window.location.href = `slide${slideNumber}.html`;
@@ -78,6 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
     addButtonFeedback();
 });
 
+// Show fullscreen prompt when page is fully loaded
+window.addEventListener('load', function() {
+    showFullscreenPrompt();
+});
+
 // Override goToSlide to scroll to top
 const originalGoToSlide = goToSlide;
 goToSlide = function(slideNumber) {
@@ -120,6 +128,22 @@ document.addEventListener('keydown', function(event) {
             nextSlide();
         }
     }
+    // F key for fullscreen entry (only enter, don't exit)
+    else if (event.key === 'f' || event.key === 'F') {
+        event.preventDefault();
+        if (!document.fullscreenElement) {
+            // Only enter fullscreen if not already in fullscreen
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Safari
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { // IE11
+                document.documentElement.msRequestFullscreen();
+            }
+            // Store that we entered fullscreen
+            sessionStorage.setItem('presentationFullscreen', 'true');
+        }
+    }
 });
 
 // Prevent accidental text selection during navigation
@@ -145,7 +169,7 @@ document.addEventListener('touchend', function(event) {
 function handleSwipe() {
     const swipeThreshold = 50; // Minimum distance for swipe
     const diff = touchStartX - touchEndX;
-    
+
     // Swipe right (previous slide)
     if (diff > swipeThreshold) {
         nextSlide();
@@ -155,3 +179,113 @@ function handleSwipe() {
         previousSlide();
     }
 }
+
+// Fullscreen functionality
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        // Enter fullscreen
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { // Safari
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { // IE11
+            document.documentElement.msRequestFullscreen();
+        }
+    } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { // Safari
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE11
+            document.msExitFullscreen();
+        }
+    }
+}
+
+// Update fullscreen button icon based on state
+function updateFullscreenButton() {
+    const fullscreenButton = document.getElementById('fullscreenButton');
+    if (fullscreenButton) {
+        const icon = fullscreenButton.querySelector('i');
+        if (document.fullscreenElement) {
+            icon.className = 'fas fa-compress';
+        } else {
+            icon.className = 'fas fa-expand';
+        }
+    }
+}
+
+// Show fullscreen prompt if previously in fullscreen
+function showFullscreenPrompt() {
+    const wasFullscreen = sessionStorage.getItem('presentationFullscreen') === 'true';
+    if (wasFullscreen && !document.fullscreenElement) {
+        // Add a subtle visual indicator
+        const prompt = document.createElement('div');
+        prompt.id = 'fullscreen-prompt';
+        prompt.innerHTML = `
+            <div style="
+                position: fixed;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0,0,0,0.8);
+                color: white;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 14px;
+                z-index: 9999;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255,255,255,0.2);
+            " onclick="this.remove(); enterFullscreenFromPrompt()">
+                Press <strong>F</strong> for fullscreen
+            </div>
+        `;
+        document.body.appendChild(prompt);
+
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+            if (prompt.parentNode) {
+                prompt.style.opacity = '0';
+                setTimeout(() => prompt.remove(), 300);
+            }
+        }, 3000);
+    }
+}
+
+// Function to enter fullscreen from prompt
+function enterFullscreenFromPrompt() {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { // Safari
+        document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { // IE11
+        document.documentElement.msRequestFullscreen();
+    }
+    sessionStorage.setItem('presentationFullscreen', 'true');
+}
+
+// Store fullscreen state before navigation
+function storeFullscreenState() {
+    const isFullscreen = !!document.fullscreenElement;
+    sessionStorage.setItem('presentationFullscreen', isFullscreen.toString());
+}
+
+// Listen for fullscreen changes
+document.addEventListener('fullscreenchange', function() {
+    updateFullscreenButton();
+    storeFullscreenState();
+});
+document.addEventListener('webkitfullscreenchange', function() {
+    updateFullscreenButton();
+    storeFullscreenState();
+});
+document.addEventListener('mozfullscreenchange', function() {
+    updateFullscreenButton();
+    storeFullscreenState();
+});
+document.addEventListener('MSFullscreenChange', function() {
+    updateFullscreenButton();
+    storeFullscreenState();
+});

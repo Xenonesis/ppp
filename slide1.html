@@ -69,6 +69,17 @@
             left: 70px;
             font-size: 18px;
             opacity: 0.8;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
         }
         .date-info {
             position: absolute;
@@ -122,7 +133,7 @@
         </div>
         
         <div class="presenter-info">
-            <div class="font-semibold">Presented by: Infrastructure Development Team</div>
+            <div class="font-semibold">submitted by: Kanishka Srivastava, submitted to: Mr. Mohd Anees</div>
         </div>
         
         <div class="date-info">
@@ -131,6 +142,11 @@
     </div>
     
     <!-- Navigation Buttons -->
+        <!-- Fullscreen Button -->
+    <button class="fullscreen-button" onclick="toggleFullscreen()" id="fullscreenButton">
+        <i class="fas fa-expand"></i>
+    </button>
+
     <div class="navigation-container">
         <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
             <i class="fas fa-arrow-left"></i>
