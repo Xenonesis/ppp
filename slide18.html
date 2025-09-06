@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples of PPP Projects in India</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background-color: #f5f9ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #19376D;
+            color: white;
+            padding: 20px 70px;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .intro {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: #19376D;
+            font-weight: 600;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            flex-grow: 1;
+        }
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+        .project-image {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-sector {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: #e8f1ff;
+            color: #19376D;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .project-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #19376D;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .project-title .material-icons {
+            margin-right: 10px;
+            color: #19376D;
+        }
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        .project-detail {
+            display: flex;
+            align-items: flex-start;
+        }
+        .project-detail .material-icons {
+            color: #19376D;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .project-detail-text {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .highlight {
+            color: #19376D;
+            font-weight: 600;
+        }
+        .note {
+            margin-top: 25px;
+            background-color: #e8f1ff;
+            border-left: 5px solid #19376D;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .note .material-icons {
+            color: #19376D;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Examples of PPP Projects in India</h1>
+        </div>
+        <div class="content">
+            <p class="intro">India has successfully implemented numerous PPP projects across various sectors</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/0f2f01454c49.jpg" alt="Golden Quadrilateral">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-sector">Transportation</span>
+                        <h3 class="project-title">
+                            <i class="material-icons">directions_car</i>
+                            Golden Quadrilateral
+                        </h3>
+                        <div class="project-details">
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">5,846 km</span> highway network connecting major cities
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">BOT model</span> with toll collection rights
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    Reduced travel time by <span class="highlight">25%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/fd7278fe0fdc.jpg" alt="Delhi Mumbai Industrial Corridor">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-sector">Industrial Development</span>
+                        <h3 class="project-title">
+                            <i class="material-icons">location_city</i>
+                            Delhi-Mumbai Industrial Corridor
+                        </h3>
+                        <div class="project-details">
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">1,483 km</span> dedicated freight corridor
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">Joint venture</span> between Indian and Japanese entities
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    Development of <span class="highlight">24 industrial nodes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/f0401241be9a.jpg" alt="Delhi International Airport">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-sector">Aviation</span>
+                        <h3 class="project-title">
+                            <i class="material-icons">flight</i>
+                            Delhi International Airport
+                        </h3>
+                        <div class="project-details">
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">Brownfield project</span> with modernization
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">30-year concession</span> to private consortium
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    Capacity increased to <span class="highlight">100 million</span> passengers
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/61e15eea9ee5.jpg" alt="Mumbai International Airport">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-sector">Aviation</span>
+                        <h3 class="project-title">
+                            <i class="material-icons">flight_takeoff</i>
+                            Mumbai International Airport
+                        </h3>
+                        <div class="project-details">
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">Modernization</span> of existing airport facilities
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    <span class="highlight">Joint venture</span> with GVK-led consortium
+                                </div>
+                            </div>
+                            <div class="project-detail">
+                                <i class="material-icons">check_circle</i>
+                                <div class="project-detail-text">
+                                    New <span class="highlight">Terminal 2</span> with integrated facilities
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <i class="material-icons">lightbulb</i>
+                <span>As of November 2020, India has implemented 1,103 PPP projects representing $274.96 billion in investments</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

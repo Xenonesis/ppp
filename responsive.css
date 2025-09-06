@@ -1,0 +1,205 @@
+/* Responsive styles for slides */
+.slide {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Enable scrolling */
+body {
+    overflow-y: auto !important;
+}
+
+.slide {
+    overflow-y: visible !important;
+}
+
+/* Desktop styles (default) */
+@media (min-width: 1024px) {
+    .slide {
+        width: 100%;
+        min-height: 100vh;
+    }
+    
+    .slide-content {
+        flex: 1;
+    }
+}
+
+/* Tablet styles */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .slide {
+        padding: 20px;
+    }
+    
+    .title {
+        font-size: 3.5rem !important;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem !important;
+    }
+    
+    .icon-container .fas {
+        font-size: 4rem !important;
+    }
+    
+    .presenter-info,
+    .date-info {
+        font-size: 16px;
+        bottom: 30px;
+    }
+    
+    .presenter-info {
+        left: 30px;
+    }
+    
+    .date-info {
+        right: 30px;
+    }
+    
+    .keyword {
+        font-size: 14px;
+        padding: 5px 12px;
+        margin: 3px;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+    .slide {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 2.5rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .icon-container {
+        margin-bottom: 30px !important;
+    }
+    
+    .icon-container .fas {
+        font-size: 3rem !important;
+    }
+    
+    .icon-bg {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .presenter-info,
+    .date-info {
+        font-size: 14px;
+        bottom: 25px;
+    }
+    
+    .presenter-info {
+        left: 20px;
+    }
+    
+    .date-info {
+        right: 20px;
+    }
+    
+    .keyword {
+        font-size: 12px;
+        padding: 4px 10px;
+        margin: 2px;
+    }
+    
+    .flex.flex-col.justify-center.items-center.h-full.px-20 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .slide {
+        padding: 10px;
+    }
+    
+    .title {
+        font-size: 2rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .icon-container {
+        margin-bottom: 20px !important;
+    }
+    
+    .icon-container .fas {
+        font-size: 2.5rem !important;
+    }
+    
+    .icon-bg {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    .presenter-info,
+    .date-info {
+        font-size: 12px;
+        bottom: 20px;
+    }
+    
+    .presenter-info {
+        left: 15px;
+    }
+    
+    .date-info {
+        right: 15px;
+    }
+    
+    .keyword {
+        font-size: 10px;
+        padding: 3px 8px;
+        margin: 1px;
+    }
+    
+    .flex.flex-col.justify-center.items-center.h-full.px-20 {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+}
+
+/* Hide decorative elements on small screens */
+@media (max-width: 767px) {
+    .accent-circle,
+    .accent-line {
+        display: none;
+    }
+}
+
+/* Ensure navigation buttons are always visible */
+.navigation-container {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* Prevent zoom on input focus for mobile */
+@media (max-width: 767px) {
+    input, textarea, select {
+        font-size: 16px;
+    }
+}

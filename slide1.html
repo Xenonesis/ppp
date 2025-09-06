@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public-Private Partnership (PPP)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 50%, #3e5aa6 100%);
+            color: white;
+            overflow: hidden;
+        }
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .subtitle {
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .accent-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            z-index: 0;
+        }
+        .accent-line {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            z-index: 0;
+        }
+        .icon-container {
+            position: relative;
+            z-index: 10;
+        }
+        .icon-bg {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        .presenter-info {
+            position: absolute;
+            bottom: 40px;
+            left: 70px;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        .date-info {
+            position: absolute;
+            bottom: 40px;
+            right: 70px;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        .keyword {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 30px;
+            margin: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .keyword-highlight {
+            background: rgba(255,0.25);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Decorative elements -->
+        <div class="accent-circle" style="width: 500px; height: 500px; top: -200px; right: -100px;"></div>
+        <div class="accent-circle" style="width: 300px; height: 300px; bottom: -100px; left: -100px;"></div>
+        <div class="accent-line" style="width: 2px; height: 300px; top: 200px; left: 300px; transform: rotate(25deg);"></div>
+        <div class="accent-line" style="width: 2px; height: 400px; top: 100px; right: 400px; transform: rotate(-15deg);"></div>
+        
+        <div class="flex flex-col justify-center items-center h-full px-20 relative z-10">
+            <div class="icon-container mb-8">
+                <div class="icon-bg"></div>
+                <i class="fas fa-handshake text-7xl"></i>
+            </div>
+            
+            <h1 class="title text-7xl mb-6 text-center">Public-Private Partnership</h1>
+            <h2 class="subtitle text-3xl mb-12 text-center">Collaborative Infrastructure Development Model</h2>
+            
+            <div class="flex flex-wrap justify-center mt-4 max-w-3xl">
+                <span class="keyword">Infrastructure</span>
+                <span class="keyword keyword-highlight">Risk Sharing</span>
+                <span class="keyword">Efficiency</span>
+                <span class="keyword keyword-highlight">Innovation</span>
+                <span class="keyword">Sustainability</span>
+                <span class="keyword">Economic Growth</span>
+            </div>
+        </div>
+        
+        <div class="presenter-info">
+            <div class="font-semibold">Presented by: Infrastructure Development Team</div>
+        </div>
+        
+        <div class="date-info">
+            <div id="current-date"></div>
+        </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Set current date
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
+        
+        // Disable previous button on first slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

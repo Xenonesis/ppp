@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROT (Rehabilitate-Operate-Transfer)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background-color: #f5f9ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #19376D;
+            color: white;
+            padding: 20px 70px;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 40px;
+        }
+        .definition-box {
+            background-color: #e8f1ff;
+            border-left: 5px solid #19376D;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .definition-title .material-icons {
+            margin-right: 10px;
+            color: #19376D;
+        }
+        .definition-text {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .characteristics {
+            margin-top: 20px;
+        }
+        .characteristics-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .characteristics-title .material-icons {
+            margin-right: 10px;
+            color: #19376D;
+        }
+        .characteristic-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .characteristic-item .material-icons {
+            color: #19376D;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .characteristic-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .examples {
+            margin-top: 30px;
+        }
+        .examples-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .examples-title .material-icons {
+            margin-right: 10px;
+            color: #19376D;
+        }
+        .example-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .example-item .material-icons {
+            color: #19376D;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .example-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .highlight {
+            color: #19376D;
+            font-weight: 600;
+        }
+        .visual-diagram {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 25px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .diagram-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .diagram-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .diagram-steps {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .diagram-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #19376D;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-icon .material-icons {
+            font-size: 28px;
+        }
+        .step-content {
+            flex-grow: 1;
+        }
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 5px;
+        }
+        .step-desc {
+            font-size: 16px;
+            color: #555;
+        }
+        .diagram-note {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">ROT (Rehabilitate-Operate-Transfer)</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="material-icons">home_repair_service</i>
+                        <span>What is ROT?</span>
+                    </div>
+                    <p class="definition-text">
+                        A PPP model where a <span class="highlight">private entity</span> rehabilitates an existing public infrastructure facility, <span class="highlight">operates</span> it for a specified period, and then <span class="highlight">transfers</span> it back to the public sector
+                    </p>
+                </div>
+                
+                <div class="characteristics">
+                    <div class="characteristics-title">
+                        <i class="material-icons">list_alt</i>
+                        <span>Key Characteristics</span>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">build</i>
+                        <div class="characteristic-text">
+                            <strong>Rehabilitation</strong> of existing infrastructure
+                        </div>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">settings</i>
+                        <div class="characteristic-text">
+                            <strong>Private operation</strong> during concession period
+                        </div>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">schedule</i>
+                        <div class="characteristic-text">
+                            <strong>Medium-term</strong> contracts (typically 10-20 years)
+                        </div>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">swap_horiz</i>
+                        <div class="characteristic-text">
+                            <strong>Asset transfer</strong> to public sector at contract end
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="examples">
+                    <div class="examples-title">
+                        <i class="material-icons">business_center</i>
+                        <span>Examples</span>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons">directions_car</i>
+                        <div class="example-text">
+                            <strong>Existing highways</strong> and road networks
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons">local_shipping</i>
+                        <div class="example-text">
+                            <strong>Port facilities</strong> and maritime infrastructure
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons">water_drop</i>
+                        <div class="example-text">
+                            <strong>Water supply systems</strong> and treatment plants
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="visual-diagram">
+                    <h3 class="diagram-title">ROT Model Process</h3>
+                    <div class="diagram-content">
+                        <div class="diagram-steps">
+                            <div class="diagram-step">
+                                <div class="step-icon">
+                                    <i class="material-icons">home_repair_service</i>
+                                </div>
+                                <div class="step-content">
+                                    <h4 class="step-title">REHABILITATE</h4>
+                                    <p class="step-desc">Private entity upgrades existing facility</p>
+                                </div>
+                            </div>
+                            
+                            <div class="diagram-step">
+                                <div class="step-icon">
+                                    <i class="material-icons">settings</i>
+                                </div>
+                                <div class="step-content">
+                                    <h4 class="step-title">OPERATE</h4>
+                                    <p class="step-desc">Private entity operates and maintains</p>
+                                </div>
+                            </div>
+                            
+                            <div class="diagram-step">
+                                <div class="step-icon">
+                                    <i class="material-icons">swap_horiz</i>
+                                </div>
+                                <div class="step-content">
+                                    <h4 class="step-title">TRANSFER</h4>
+                                    <p class="step-desc">Facility returned to public sector</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="diagram-note">Focuses on upgrading existing infrastructure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

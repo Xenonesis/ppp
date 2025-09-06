@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to PPP</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            padding: 1.25rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        }
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+        }
+        .definition-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid #0a2463;
+        }
+        .definition-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: rgba(10, 36, 99, 0.05);
+            border-radius: 0 0 0 120px;
+        }
+        .key-point {
+            transition: all 0.3s ease;
+        }
+        .key-point:hover {
+            transform: translateX(5px);
+        }
+        .key-point-icon {
+            background: rgba(10, 36, 99, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a2463;
+            flex-shrink: 0;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 1.25rem;
+            height: 100%;
+        }
+        .accent-shape {
+            position: absolute;
+            z-index: 0;
+        }
+        .accent-shape-1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.05);
+            bottom: -100px;
+            right: -50px;
+        }
+        .accent-shape-2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(10, 36, 99, 0.05);
+            top: -50px;
+            left: 200px;
+        }
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #0a2463;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title text-4xl">Introduction to Public-Private Partnership</h1>
+        </div>
+        
+        <div class="p-10 flex gap-8 relative">
+            <!-- Decorative shapes -->
+            <div class="accent-shape accent-shape-1"></div>
+            <div class="accent-shape accent-shape-2"></div>
+            
+            <!-- Left column -->
+            <div class="w-1/2 flex flex-col gap-6">
+                <!-- Definition box -->
+                <div class="definition-box">
+                    <div class="flex items-center mb-3">
+                        <div class="key-point-icon mr-3">
+                            <i class="fas fa-file-contract text-xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-800">What is PPP?</h2>
+                    </div>
+                    <p class="text-lg leading-relaxed pl-12">
+                        A <span class="font-bold text-blue-800">long-term contractual arrangement</span> between public and private sectors to deliver public infrastructure/services with <span class="font-bold text-blue-800">shared risks, resources & expertise</span>
+                    </p>
+                </div>
+                
+                <!-- Key points -->
+                <div class="space-y-4">
+                    <div class="key-point flex items-center">
+                        <div class="key-point-icon mr-4">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-800">Long-term Partnership</h3>
+                            <p class="text-slate-600">20-30 year contracts with shared objectives</p>
+                        </div>
+                    </div>
+                    
+                    <div class="key-point flex items-center">
+                        <div class="key-point-icon mr-4">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-800">Risk Allocation</h3>
+                            <p class="text-slate-600">Optimal distribution between public & private entities</p>
+                        </div>
+                    </div>
+                    
+                    <div class="key-point flex items-center">
+                        <div class="key-point-icon mr-4">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-800">Private Financing</h3>
+                            <p class="text-slate-600">Leverages private capital for public infrastructure</p>
+                        </div>
+                    </div>
+                    
+                    <div class="key-point flex items-center">
+                        <div class="key-point-icon mr-4">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-800">Performance-based</h3>
+                            <p class="text-slate-600">Payments linked to measurable outcomes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right column -->
+            <div class="w-1/2">
+                <div class="chart-container h-full flex flex-col">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4">Global PPP Market Growth</h2>
+                    
+                    <div class="flex-grow relative">
+                        <canvas id="pppChart"></canvas>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <div class="text-center">
+                            <div class="stat-number">135+</div>
+                            <div class="stat-label">Countries</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number">$2.5T</div>
+                            <div class="stat-label">Investment Value</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-number">8,500+</div>
+                            <div class="stat-label">Active Projects</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('pppChart').getContext('2d');
+            
+            const gradientFill = ctx.createLinearGradient(0, 0, 0, 400);
+            gradientFill.addColorStop(0, 'rgba(59, 130, 246, 0.6)');
+            gradientFill.addColorStop(1, 'rgba(59, 130, 246, 0.1)');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2000', '2005', '2010', '2015', '2020', '2023'],
+                    datasets: [{
+                        label: 'Global PPP Investment (Billion USD)',
+                        data: [45, 120, 210, 310, 420, 530],
+                        borderColor: '#0a2463',
+                        backgroundColor: gradientFill,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#0a2463',
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(10, 36, 99, 0.8)',
+                            titleFont: {
+                                family: 'Montserrat',
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                family: 'Open Sans',
+                                size: 13
+                            },
+                            padding: 12,
+                            cornerRadius: 8
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Open Sans'
+                                },
+                                callback: function(value) {
+                                    return '$' + value + 'B';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Open Sans'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

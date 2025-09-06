@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advantages and Challenges of PPP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background-color: #f5f9ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #19376D;
+            color: white;
+            padding: 20px 70px;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 0 15px;
+        }
+        .column-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .column-title .material-icons {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        .advantages .column-title {
+            color: #2E7D32;
+        }
+        .challenges .column-title {
+            color: #C62828;
+        }
+        .item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+        .item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+        }
+        .advantages .item {
+            border-left: 4px solid #2E7D32;
+        }
+        .challenges .item {
+            border-left: 4px solid #C62828;
+        }
+        .item-icon {
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .advantages .item-icon {
+            color: #2E7D32;
+        }
+        .challenges .item-icon {
+            color: #C62828;
+        }
+        .item-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .item-text strong {
+            font-weight: 600;
+        }
+        .advantages .item-text strong {
+            color: #2E7D32;
+        }
+        .challenges .item-text strong {
+            color: #C62828;
+        }
+        .divider {
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #19376D, transparent);
+            margin: 0 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 90%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Advantages and Challenges of PPP</h1>
+        </div>
+        <div class="content">
+            <div class="column advantages">
+                <h2 class="column-title">
+                    <i class="material-icons">thumb_up</i>
+                    Advantages
+                </h2>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">speed</i>
+                    <div class="item-text">
+                        <strong>Increased Efficiency</strong> and access to private sector expertise
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">account_balance</i>
+                    <div class="item-text">
+                        <strong>Cost-Sharing</strong> and optimal risk allocation
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">trending_up</i>
+                    <div class="item-text">
+                        <strong>Improved Service Delivery</strong> and quality standards
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">schedule</i>
+                    <div class="item-text">
+                        <strong>Accelerated Infrastructure</strong> development
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">autorenew</i>
+                    <div class="item-text">
+                        <strong>Flexibility</strong> in responding to changing needs
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="https://sfile.chatglm.cn/images-ppt/a41a4b86190f.jpg" alt="Advantages of PPP">
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="column challenges">
+                <h2 class="column-title">
+                    <i class="material-icons">thumb_down</i>
+                    Challenges
+                </h2>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">layers</i>
+                    <div class="item-text">
+                        <strong>Complexity</strong> in structuring and implementation
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">date_range</i>
+                    <div class="item-text">
+                        <strong>Long-term Commitment</strong> with limited flexibility
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">payments</i>
+                    <div class="item-text">
+                        <strong>Higher Transaction Costs</strong> compared to traditional procurement
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">language</i>
+                    <div class="item-text">
+                        <strong>Dominance of Foreign Players</strong> in local markets
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <i class="material-icons item-icon">policy</i>
+                    <div class="item-text">
+                        <strong>Regulatory Requirements</strong> and policy framework needs
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="https://sfile.chatglm.cn/images-ppt/a3a5ea6daab9.jpg" alt="Challenges of PPP">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

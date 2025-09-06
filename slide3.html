@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objectives of PPP</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            padding: 1.25rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        }
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+        }
+        .objective-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background: linear-gradient(90deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            padding: 1rem;
+            position: relative;
+        }
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        .card-body {
+            padding: 1.25rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .metric {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .metric-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(10, 36, 99, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            color: #0a2463;
+            flex-shrink: 0;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            padding: 1.25rem;
+            height: 100%;
+        }
+        .accent-shape {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .accent-shape-1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.05);
+            bottom: -100px;
+            right: -50px;
+        }
+        .accent-shape-2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(10, 36, 99, 0.05);
+            top: -50px;
+            left: 200px;
+        }
+        .key-benefit {
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title text-4xl">Strategic Objectives of PPP</h1>
+        </div>
+        
+        <div class="p-8 flex gap-8 relative">
+            <!-- Decorative shapes -->
+            <div class="accent-shape accent-shape-1"></div>
+            <div class="accent-shape accent-shape-2"></div>
+            
+            <!-- Left column - Objectives Grid -->
+            <div class="w-2/3 grid grid-cols-2 gap-6">
+                <!-- Objective 1 -->
+                <div class="objective-card">
+                    <div class="card-header flex items-center">
+                        <div class="card-icon">
+                            <i class="fas fa-coins fa-2x"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Resource Mobilization</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Attract private capital</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Supplement public budgets</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Reduce fiscal burden</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="key-benefit">
+                            <span class="font-semibold text-blue-800">Key Impact:</span> Enables projects that would be financially unfeasible
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-500">Success Metric</div>
+                                <div class="font-semibold">Private Investment Ratio</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Objective 2 -->
+                <div class="objective-card">
+                    <div class="card-header flex items-center">
+                        <div class="card-icon">
+                            <i class="fas fa-tachometer-alt fa-2x"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Enhanced Efficiency</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Leverage private sector expertise</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Innovative technologies</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Streamlined processes</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="key-benefit">
+                            <span class="font-semibold text-blue-800">Key Impact:</span> 20-30% cost savings vs. traditional procurement
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="fas fa-stopwatch"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-500">Success Metric</div>
+                                <div class="font-semibold">Time & Cost Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Objective 3 -->
+                <div class="objective-card">
+                    <div class="card-header flex items-center">
+                        <div class="card-icon">
+                            <i class="fas fa-award fa-2x"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Improved Quality</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Higher service standards</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Better maintenance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Performance incentives</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="key-benefit">
+                            <span class="font-semibold text-blue-800">Key Impact:</span> Lifecycle approach to asset management
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-500">Success Metric</div>
+                                <div class="font-semibold">Service Quality Index</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Objective 4 -->
+                <div class="objective-card">
+                    <div class="card-header flex items-center">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket fa-2x"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Accelerated Development</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Faster project delivery</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Reduced bureaucratic delays</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                <span>Parallel implementation</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="key-benefit">
+                            <span class="font-semibold text-blue-800">Key Impact:</span> 30-50% faster completion than public projects
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="metric-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-500">Success Metric</div>
+                                <div class="font-semibold">Time-to-Completion</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right column - Chart and Additional Info -->
+            <div class="w-1/3 flex flex-col gap-6">
+                <!-- Chart -->
+                <div class="chart-container flex-grow">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4">PPP Benefits Distribution</h2>
+                    <div class="h-64">
+                        <canvas id="benefitsChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Key Benefits -->
+                <div class="bg-white rounded-xl shadow-md p-5">
+                    <h2 class="text-xl font-bold text-slate-800 mb-3">Strategic Outcomes</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 mr-3">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Risk Optimization</div>
+                                <div class="text-sm text-slate-600">Balanced allocation between partners</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 mr-3">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Global Standards</div>
+                                <div class="text-sm text-slate-600">International best practices</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 mr-3">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Capacity Building</div>
+                                <div class="text-sm text-slate-600">Knowledge transfer & local expertise</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('benefitsChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Cost Efficiency', 'Time Savings', 'Quality', 'Innovation', 'Sustainability'],
+                    datasets: [{
+                        label: 'Traditional Procurement',
+                        data: [40, 35, 45, 30, 40],
+                        backgroundColor: 'rgba(148, 163, 184, 0.2)',
+                        borderColor: 'rgba(148, 163, 184, 0.8)',
+                        pointBackgroundColor: 'rgba(148, 163, 184, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(148, 163, 184, 1)'
+                    }, {
+                        label: 'PPP Model',
+                        data: [75, 80, 85, 90, 70],
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 0.8)',
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(59, 130, 246, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    family: 'Open Sans',
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                color: '#64748b',
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Open Sans',
+                                    size: 12
+                                },
+                                boxWidth: 12,
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(10, 36, 99, 0.8)',
+                            titleFont: {
+                                family: 'Montserrat',
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                family: 'Open Sans',
+                                size: 13
+                            },
+                            padding: 12,
+                            cornerRadius: 8
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

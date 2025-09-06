@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background-color: #f5f9ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #19376D;
+            color: white;
+            padding: 20px 70px;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .conclusion-container {
+            display: flex;
+            flex-grow: 1;
+        }
+        .left-content {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .right-content {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 40px;
+        }
+        .key-points {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title .material-icons {
+            margin-right: 15px;
+            font-size: 32px;
+            color: #19376D;
+        }
+        .point-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+        .point-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.2s;
+        }
+        .point-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+        .point-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e8f1ff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .point-icon .material-icons {
+            font-size: 28px;
+            color: #19376D;
+        }
+        .point-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .point-text strong {
+            color: #19376D;
+            font-weight: 600;
+        }
+        .future-prospects {
+            margin-top: 30px;
+        }
+        .prospect-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+        .prospect-icon {
+            color: #19376D;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+        .prospect-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .prospect-text strong {
+            color: #19376D;
+            font-weight: 600;
+        }
+        .visual-summary {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 25px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .summary-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .summary-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .summary-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #19376D, #5688d4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 26px;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 16px rgba(25, 55, 109, 0.3);
+        }
+        .summary-points {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .summary-point {
+            display: flex;
+            align-items: center;
+            background-color: #e8f1ff;
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+        .summary-point .material-icons {
+            color: #19376D;
+            margin-right: 12px;
+            font-size: 24px;
+        }
+        .summary-point-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #19376D;
+        }
+        .final-note {
+            margin-top: 30px;
+            background-color: #e8f1ff;
+            border-left: 5px solid #19376D;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .final-note .material-icons {
+            color: #19376D;
+            margin-right: 15px;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Conclusion</h1>
+        </div>
+        <div class="content">
+            <div class="conclusion-container">
+                <div class="left-content">
+                    <div class="key-points">
+                        <h2 class="section-title">
+                            <i class="material-icons">summarize</i>
+                            Key Takeaways
+                        </h2>
+                        <div class="point-grid">
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="material-icons">handshake</i>
+                                </div>
+                                <div class="point-text">
+                                    <strong>Collaborative Model</strong> between public and private sectors
+                                </div>
+                            </div>
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="material-icons">account_balance</i>
+                                </div>
+                                <div class="point-text">
+                                    <strong>Risk Sharing</strong> optimizes project outcomes
+                                </div>
+                            </div>
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="material-icons">engineering</i>
+                                </div>
+                                <div class="point-text">
+                                    <strong>Multiple Models</strong> for different project needs
+                                </div>
+                            </div>
+                            <div class="point-item">
+                                <div class="point-icon">
+                                    <i class="material-icons">trending_up</i>
+                                </div>
+                                <div class="point-text">
+                                    <strong>Infrastructure Growth</strong> accelerator
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="future-prospects">
+                        <h2 class="section-title">
+                            <i class="material-icons">visibility</i>
+                            Future Prospects
+                        </h2>
+                        <div class="prospect-item">
+                            <i class="material-icons prospect-icon">eco</i>
+                            <div class="prospect-text">
+                                <strong>Sustainable Infrastructure</strong> development through green PPPs
+                            </div>
+                        </div>
+                        <div class="prospect-item">
+                            <i class="material-icons prospect-icon">smart_toy</i>
+                            <div class="prospect-text">
+                                <strong>Digital Transformation</strong> of PPP processes and management
+                            </div>
+                        </div>
+                        <div class="prospect-item">
+                            <i class="material-icons prospect-icon">diversity_3</i>
+                            <div class="prospect-text">
+                                <strong>Inclusive Growth</strong> through community-focused PPP models
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-content">
+                    <div class="visual-summary">
+                        <h3 class="summary-title">PPP in a Nutshell</h3>
+                        <div class="summary-content">
+                            <div class="summary-circle">
+                                Public-Private Partnership
+                            </div>
+                            <div class="summary-points">
+                                <div class="summary-point">
+                                    <i class="material-icons">check_circle</i>
+                                    <div class="summary-point-text">Bridges infrastructure funding gaps</div>
+                                </div>
+                                <div class="summary-point">
+                                    <i class="material-icons">check_circle</i>
+                                    <div class="summary-point-text">Leverages private sector efficiency</div>
+                                </div>
+                                <div class="summary-point">
+                                    <i class="material-icons">check_circle</i>
+                                    <div class="summary-point-text">Enables faster project delivery</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="final-note">
+                <i class="material-icons">lightbulb</i>
+                <span>Effective PPP implementation requires strong governance, transparent processes, and balanced risk allocation</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

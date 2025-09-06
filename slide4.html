@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importance of PPP in Infrastructure Development</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            padding: 1.25rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        }
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+        }
+        .importance-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .importance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            color: white;
+        }
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .card-body {
+            padding: 1.25rem;
+            flex-grow: 1;
+        }
+        .stat-highlight {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #0a2463;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            padding: 1.25rem;
+            height: 100%;
+        }
+        .key-point {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .key-point::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+        .accent-shape {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        .accent-shape-1 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.05);
+            bottom: -100px;
+            right: -50px;
+        }
+        .accent-shape-2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(10, 36, 99, 0.05);
+            top: -50px;
+            left: 200px;
+        }
+        .infographic-box {
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .infographic-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0 0 0 100px;
+        }
+        .infographic-stat {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: white;
+        }
+        .infographic-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title text-4xl">Importance of PPP in Infrastructure Development</h1>
+        </div>
+        
+        <div class="p-8 flex gap-8 relative">
+            <!-- Decorative shapes -->
+            <div class="accent-shape accent-shape-1"></div>
+            <div class="accent-shape accent-shape-2"></div>
+            
+            <!-- Left column - Key Points -->
+            <div class="w-7/12 flex flex-col gap-6">
+                <!-- Top row - Stats -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="infographic-box">
+                        <div class="infographic-stat">$94 Trillion</div>
+                        <div class="infographic-label">Global Infrastructure Gap by 2040</div>
+                    </div>
+                    <div class="infographic-box">
+                        <div class="infographic-stat">$3.7 Trillion</div>
+                        <div class="infographic-label">Annual Investment Needed</div>
+                    </div>
+                </div>
+                
+                <!-- Key Points -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="importance-card">
+                        <div class="card-header flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-coins fa-2x"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-800">Financial Resource Mobilization</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="key-point mb-2">Bridges budget constraints</div>
+                            <div class="key-point mb-2">Attracts private capital</div>
+                            <div class="key-point mb-2">Leverages pension funds</div>
+                            <div class="key-point">Diversifies funding sources</div>
+                            
+                            <div class="mt-4 pt-4 border-t border-slate-100">
+                                <div class="flex items-center">
+                                    <div class="flex-1">
+                                        <div class="stat-highlight">40-60%</div>
+                                        <div class="stat-label">Private Financing</div>
+                                    </div>
+                                    <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
+                                        <i class="fas fa-chart-pie text-blue-700 text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="importance-card">
+                        <div class="card-header flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-tachometer-alt fa-2x"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-800">Technical Expertise</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="key-point mb-2">Advanced technologies</div>
+                            <div class="key-point mb-2">Specialized skills</div>
+                            <div class="key-point mb-2">Innovation capacity</div>
+                            <div class="key-point">Management expertise</div>
+                            
+                            <div class="mt-4 pt-4 border-t border-slate-100">
+                                <div class="flex items-center">
+                                    <div class="flex-1">
+                                        <div class="stat-highlight">25-30%</div>
+                                        <div class="stat-label">Cost Efficiency Gain</div>
+                                    </div>
+                                    <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
+                                        <i class="fas fa-lightbulb text-blue-700 text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="importance-card">
+                        <div class="card-header flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-rocket fa-2x"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-800">Accelerated Implementation</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="key-point mb-2">Faster project delivery</div>
+                            <div class="key-point mb-2">Reduced bureaucracy</div>
+                            <div class="key-point mb-2">Parallel processing</div>
+                            <div class="key-point">Efficient procurement</div>
+                            
+                            <div class="mt-4 pt-4 border-t border-slate-100">
+                                <div class="flex items-center">
+                                    <div class="flex-1">
+                                        <div class="stat-highlight">30-50%</div>
+                                        <div class="stat-label">Time Reduction</div>
+                                    </div>
+                                    <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
+                                        <i class="fas fa-stopwatch text-blue-700 text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="importance-card">
+                        <div class="card-header flex items-center">
+                            <div class="card-icon">
+                                <i class="fas fa-balance-scale fa-2x"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-800">Risk Optimization</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="key-point mb-2">Optimal risk allocation</div>
+                            <div class="key-point mb-2">Risk transfer to experts</div>
+                            <div class="key-point mb-2">Performance incentives</div>
+                            <div class="key-point">Long-term perspective</div>
+                            
+                            <div class="mt-4 pt-4 border-t border-slate-100">
+                                <div class="flex items-center">
+                                    <div class="flex-1">
+                                        <div class="stat-highlight">70-80%</div>
+                                        <div class="stat-label">Risk Transfer</div>
+                                    </div>
+                                    <div class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
+                                        <i class="fas fa-shield-alt text-blue-700 text-xl"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right column - Chart and Examples -->
+            <div class="w-5/12 flex flex-col gap-6">
+                <!-- Chart -->
+                <div class="chart-container flex-grow">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4">Infrastructure Investment by Region</h2>
+                    <div class="h-64">
+                        <canvas id="regionChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Case Studies -->
+                <div class="bg-white rounded-xl shadow-md p-5">
+                    <h2 class="text-xl font-bold text-slate-800 mb-3">Success Stories</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-700 mr-3 flex-shrink-0">
+                                <i class="fas fa-road"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Golden Quadrilateral (India)</div>
+                                <div class="text-sm text-slate-600">5,846 km highway network, 40% cost savings</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-700 mr-3 flex-shrink-0">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Delhi Airport (India)</div>
+                                <div class="text-sm text-slate-600">World-class facility, 3x passenger capacity</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-700 mr-3 flex-shrink-0">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Royal London Hospital (UK)</div>
+                                <div class="text-sm text-slate-600">£1B project, delivered on time & budget</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('regionChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Asia-Pacific', 'Europe', 'North America', 'Latin America', 'Africa', 'Middle East'],
+                    datasets: [{
+                        label: 'Traditional Funding',
+                        data: [35, 45, 40, 25, 15, 20],
+                        backgroundColor: 'rgba(148, 163, 184, 0.7)',
+                        borderColor: 'rgba(148, 163, 184, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'PPP Funding',
+                        data: [65, 55, 60, 75, 85, 80],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Open Sans',
+                                    size: 11
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Open Sans',
+                                    size: 11
+                                },
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Open Sans',
+                                    size: 12
+                                },
+                                boxWidth: 12,
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(10, 36, 99, 0.8)',
+                            titleFont: {
+                                family: 'Montserrat',
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                family: 'Open Sans',
+                                size: 13
+                            },
+                            padding: 12,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

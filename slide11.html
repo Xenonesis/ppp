@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOO (Build-Own-Operate)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            padding: 1.25rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        }
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 2;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background: linear-gradient(90deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        .card-body {
+            padding: 1.25rem;
+        }
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .key-point-icon {
+            color: #0a2463;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+        .case-study {
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            padding: 1.25rem;
+            height: 100%;
+        }
+        .stat-highlight {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #0a2463;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .process-step {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 1rem;
+        }
+        .process-step:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 1.5rem;
+            height: calc(100% + 0.5rem);
+            width: 2px;
+            background: #cbd5e1;
+        }
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: #0a2463;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .step-content {
+            font-weight: 600;
+        }
+        .step-desc {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .tag-blue {
+            background: rgba(59, 130, 246, 0.1);
+            color: #1e40af;
+        }
+        .tag-green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #047857;
+        }
+        .tag-amber {
+            background: rgba(245, 158, 11, 0.1);
+            color: #b45309;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1rem;
+        }
+        .comparison-table th {
+            background: rgba(10, 36, 99, 0.05);
+            padding: 0.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #0a2463;
+        }
+        .comparison-table td {
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .check-icon {
+            color: #10b981;
+        }
+        .times-icon {
+            color: #ef4444;
+        }
+        .boo-phase {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .boo-phase:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 2.5rem;
+            top: 2.5rem;
+            height: calc(100% + 1rem);
+            width: 2px;
+            background: #cbd5e1;
+        }
+        .phase-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a2463 0%, #1e3a8a 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+        .phase-content {
+            flex-grow: 1;
+        }
+        .phase-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #0a2463;
+            margin-bottom: 0.25rem;
+        }
+        .phase-desc {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        .risk-meter {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        .risk-level {
+            height: 100%;
+            border-radius: 4px;
+        }
+        .risk-high {
+            width: 90%;
+            background: #ef4444;
+        }
+        .highlight-box {
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title text-4xl">BOO (Build-Own-Operate)</h1>
+        </div>
+        
+        <div class="p-8 flex gap-8">
+            <!-- Left column -->
+            <div class="w-7/12 flex flex-col gap-6">
+                <!-- Definition and Key Features -->
+                <div class="feature-card">
+                    <div class="card-header flex items-center">
+                        <div class="card-icon">
+                            <i class="fas fa-landmark text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Definition & Key Features</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-lg mb-4">A PPP model where a <span class="font-bold text-blue-800">private entity</span> builds, owns, and operates an infrastructure facility <span class="font-bold text-blue-800">indefinitely</span> without transferring ownership to the public sector</p>
+                        
+                        <div class="flex flex-wrap mb-4">
+                            <span class="tag tag-blue"><i class="fas fa-infinity mr-1"></i> Permanent ownership</span>
+                            <span class="tag tag-green"><i class="fas fa-coins mr-1"></i> Revenue collection</span>
+                            <span class="tag tag-amber"><i class="fas fa-cogs mr-1"></i> Full operational control</span>
+                        </div>
+                        
+                        <div class="key-point">
+                            <i class="fas fa-check-circle key-point-icon text-blue-600"></i>
+                            <div><span class="font-semibold">No asset transfer</span> to public sector</div>
+                        </div>
+                        <div class="key-point">
+                            <i class="fas fa-check-circle key-point-icon text-blue-600"></i>
+                            <div><span class="font-semibold">Private sector</span> retains full ownership</div>
+                        </div>
+                        <div class="key-point">
+                            <i class="fas fa-check-circle key-point-icon text-blue-600"></i>
+                            <div><span class="font-semibold">Regulatory oversight</span> by public authority</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BOO Process Phases -->
+                <div class="feature-card">
+                    <div class="card-header flex items-center">
+                        <div class="card-icon">
+                            <i class="fas fa-sitemap text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">BOO Lifecycle</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="boo-phase">
+                            <div class="phase-icon">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <div class="phase-content">
+                                <div class="phase-title">BUILD</div>
+                                <div class="phase-desc">Private sector finances and constructs the facility</div>
+                            </div>
+                        </div>
+                        
+                        <div class="boo-phase">
+                            <div class="phase-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="phase-content">
+                                <div class="phase-title">OWN</div>
+                                <div class="phase-desc">Private entity retains permanent ownership</div>
+                            </div>
+                        </div>
+                        
+                        <div class="boo-phase">
+                            <div class="phase-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="phase-content">
+                                <div class="phase-title">OPERATE</div>
+                                <div class="phase-desc">Private entity operates indefinitely</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right column -->
+            <div class="w-5/12 flex flex-col gap-6">
+                <!-- Risk Allocation -->
+                <div class="feature-card">
+                    <div class="card-header flex items-center">
+                        <div class="card-icon">
+                            <i class="fas fa-balance-scale text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Risk Allocation</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Risk Type</th>
+                                    <th>Public Sector</th>
+                                    <th>Private Sector</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Construction</td>
+                                    <td><i class="fas fa-times times-icon"></i></td>
+                                    <td><i class="fas fa-check check-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Operation</td>
+                                    <td><i class="fas fa-times times-icon"></i></td>
+                                    <td><i class="fas fa-check check-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Demand/Revenue</td>
+                                    <td><i class="fas fa-times times-icon"></i></td>
+                                    <td><i class="fas fa-check check-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Asset Ownership</td>
+                                    <td><i class="fas fa-times times-icon"></i></td>
+                                    <td><i class="fas fa-check check-icon"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>Regulatory Change</td>
+                                    <td><i class="fas fa-check check-icon"></i></td>
+                                    <td><i class="fas fa-times times-icon"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="mt-4">
+                            <h3 class="font-bold text-slate-800 mb-2">Overall Risk Transfer</h3>
+                            <div class="risk-meter">
+                                <div class="risk-level risk-high"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Studies and Statistics -->
+                <div class="chart-container">
+                    <h2 class="text-xl font-bold text-slate-800 mb-4">Case Studies & Impact</h2>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="text-center">
+                            <div class="stat-highlight">90%</div>
+                            <div class="stat-label">Risk Transfer</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="stat-highlight">35%</div>
+                            <div class="stat-label">Cost Efficiency</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3 mb-4">
+                        <div class="case-study">
+                            <h3 class="font-bold text-lg text-blue-800 mb-1">Power Generation Plants</h3>
+                            <p class="text-sm">Independent power producers worldwide using BOO model for long-term energy projects</p>
+                        </div>
+                        <div class="case-study">
+                            <h3 class="font-bold text-lg text-blue-800 mb-1">Industrial Parks</h3>
+                            <p class="text-sm">Private development of special economic zones with full ownership rights</p>
+                        </div>
+                    </div>
+                    
+                    <div class="h-32">
+                        <canvas id="booChart"></canvas>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h3 class="font-bold text-slate-800 mb-2">Key Advantages</h3>
+                        <div class="flex flex-wrap">
+                            <span class="tag tag-blue">Permanent Investment</span>
+                            <span class="tag tag-green">Long-term Planning</span>
+                            <span class="tag tag-amber">Full Control</span>
+                            <span class="tag tag-blue">Sustainability Focus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('booChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Power Plants', 'Industrial Parks', 'Telecom Towers', 'Data Centers'],
+                    datasets: [{
+                        label: 'BOO Projects by Sector (%)',
+                        data: [50, 25, 15, 10],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(16, 185, 129, 0.7)',
+                            'rgba(245, 158, 11, 0.7)',
+                            'rgba(139, 92, 246, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(245, 158, 11, 1)',
+                            'rgba(139, 92, 246, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 60,
+                            ticks: {
+                                font: {
+                                    family: 'Open Sans',
+                                    size: 11
+                                },
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    family: 'Open Sans',
+                                    size: 11
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(10, 36, 99, 0.8)',
+                            titleFont: {
+                                family: 'Montserrat',
+                                size: 12,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                family: 'Open Sans',
+                                size: 11
+                            },
+                            padding: 10,
+                            cornerRadius: 6,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.raw + '% of BOO projects';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

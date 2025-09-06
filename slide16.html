@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joint Venture (JV)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            background-color: #f5f9ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #19376D;
+            color: white;
+            padding: 20px 70px;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 40px 70px;
+        }
+        .left-content {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 40px;
+        }
+        .definition-box {
+            background-color: #e8f1ff;
+            border-left: 5px solid #19376D;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+        .definition-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .definition-title .material-icons {
+            margin-right: 10px;
+            color: #19376D;
+        }
+        .definition-text {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .characteristics {
+            margin-top: 20px;
+        }
+        .characteristics-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .characteristics-title .material-icons {
+            margin-right: 10px;
+            color: #19376D;
+        }
+        .characteristic-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .characteristic-item .material-icons {
+            color: #19376D;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .characteristic-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .examples {
+            margin-top: 30px;
+        }
+        .examples-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .examples-title .material-icons {
+            margin-right: 10px;
+            color: #19376D;
+        }
+        .example-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .example-item .material-icons {
+            color: #19376D;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .example-text {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+        .highlight {
+            color: #19376D;
+            font-weight: 600;
+        }
+        .visual-diagram {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 25px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .diagram-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #19376D;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .diagram-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .diagram-jv {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .diagram-entities {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .diagram-entity {
+            width: 45%;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            background-color: #e8f1ff;
+            color: #19376D;
+        }
+        .diagram-arrow {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .diagram-arrow .material-icons {
+            font-size: 36px;
+            color: #19376D;
+        }
+        .diagram-jv-company {
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 8px;
+            background-color: #19376D;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .diagram-benefits {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .diagram-benefit {
+            width: 48%;
+            padding: 12px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 8px;
+            background-color: #f0f7ff;
+            color: #19376D;
+        }
+        .diagram-note {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+            font-style: italic;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Joint Venture (JV)</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="definition-box">
+                    <div class="definition-title">
+                        <i class="material-icons">handshake</i>
+                        <span>What is Joint Venture?</span>
+                    </div>
+                    <p class="definition-text">
+                        A PPP model where <span class="highlight">public and private sectors</span> form a <span class="highlight">separate legal entity</span> with shared ownership, control, profits, and risks
+                    </p>
+                </div>
+                
+                <div class="characteristics">
+                    <div class="characteristics-title">
+                        <i class="material-icons">list_alt</i>
+                        <span>Key Characteristics</span>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">balance</i>
+                        <div class="characteristic-text">
+                            <strong>Shared ownership</strong> between public and private sectors
+                        </div>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">groups</i>
+                        <div class="characteristic-text">
+                            <strong>Joint management</strong> and decision-making
+                        </div>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">trending_up</i>
+                        <div class="characteristic-text">
+                            <strong>Shared risks</strong> and rewards
+                        </div>
+                    </div>
+                    <div class="characteristic-item">
+                        <i class="material-icons">schedule</i>
+                        <div class="characteristic-text">
+                            <strong>Long-term commitment</strong> with no predetermined end
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="examples">
+                    <div class="examples-title">
+                        <i class="material-icons">business_center</i>
+                        <span>Examples</span>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons">flight</i>
+                        <div class="example-text">
+                            <strong>Airport development</strong> and management companies
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons">train</i>
+                        <div class="example-text">
+                            <strong>Railway projects</strong> and transportation systems
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons">location_city</i>
+                        <div class="example-text">
+                            <strong>Urban development</strong> and smart city projects
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="visual-diagram">
+                    <h3 class="diagram-title">Joint Venture Model Structure</h3>
+                    <div class="diagram-content">
+                        <div class="diagram-jv">
+                            <div class="diagram-entities">
+                                <div class="diagram-entity">
+                                    Public Sector
+                                </div>
+                                <div class="diagram-entity">
+                                    Private Sector
+                                </div>
+                            </div>
+                            
+                            <div class="diagram-arrow">
+                                <i class="material-icons">arrow_downward</i>
+                            </div>
+                            
+                            <div class="diagram-jv-company">
+                                Joint Venture Company
+                            </div>
+                            
+                            <div class="diagram-arrow">
+                                <i class="material-icons">arrow_downward</i>
+                            </div>
+                            
+                            <div class="diagram-benefits">
+                                <div class="diagram-benefit">
+                                    Shared Resources
+                                </div>
+                                <div class="diagram-benefit">
+                                    Combined Expertise
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="diagram-note">Creates a new entity with balanced public-private influence</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div class="navigation-container">
+        <button class="nav-button prev-button" onclick="previousSlide()" id="prevButton">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-button next-button" onclick="nextSlide()" id="nextButton">
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    
+    <script src="navigation.js"></script>
+    <script>
+        // Disable navigation buttons based on current slide
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentSlide = getCurrentSlideNumber();
+            if (currentSlide === 1) {
+                document.getElementById('prevButton').disabled = true;
+            } else if (currentSlide === 19) {
+                document.getElementById('nextButton').disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

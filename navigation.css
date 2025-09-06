@@ -1,0 +1,175 @@
+.navigation-container {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 1000;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.nav-button {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    color: #1e3a8a;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    color: #0a2463;
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+.nav-button i {
+    font-size: 20px;
+}
+
+.nav-button.prev-button {
+    padding-left: 20px;
+}
+
+.nav-button.next-button {
+    padding-right: 20px;
+}
+
+/* Hide text in navigation buttons for all screen sizes */
+.nav-button span {
+    display: none;
+}
+
+/* Center icons in buttons */
+.nav-button.prev-button i, 
+.nav-button.next-button i {
+    margin: 0;
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.nav-button:disabled:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navigation-container {
+        padding: 0 20px;
+        bottom: 15px;
+    }
+    
+    .nav-button {
+        padding: 12px;
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .nav-button i {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation-container {
+        padding: 0 10px;
+        bottom: 10px;
+    }
+    
+    .nav-button {
+        padding: 10px;
+        font-size: 14px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .nav-button span {
+        display: none;
+    }
+    
+    .nav-button.prev-button i, 
+    .nav-button.next-button i {
+        margin: 0;
+    }
+    
+    .nav-button i {
+        font-size: 16px;
+    }
+}
+
+/* Touch device enhancements */
+@media (hover: none) and (pointer: coarse) {
+    .nav-button {
+        padding: 15px;
+        font-size: 20px;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .nav-button i {
+        font-size: 22px;
+    }
+}
+
+/* Simple slide transitions */
+.slide {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Simple fade effect for page transitions */
+body {
+    transition: opacity 0.3s ease;
+}
+
+/* Simple button states */
+.nav-button:active {
+    transform: scale(0.95);
+    transition: all 0.1s ease;
+}
+
+.nav-button:focus {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(30, 58, 138, 0.3);
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:disabled:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
